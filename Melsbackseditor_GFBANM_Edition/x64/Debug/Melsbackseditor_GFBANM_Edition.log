@@ -1,0 +1,10 @@
+﻿  Melsbackseditor_GFBANM_Edition.cpp
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(20,15): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(18,12): warning C4101: 'seconds': unreferenced local variable
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(312,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(317,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(321,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(326,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(330,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(335,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Melsbackseditor_GFBANM_Edition.vcxproj -> C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\x64\Debug\Melsbackseditor_GFBANM_Edition.exe

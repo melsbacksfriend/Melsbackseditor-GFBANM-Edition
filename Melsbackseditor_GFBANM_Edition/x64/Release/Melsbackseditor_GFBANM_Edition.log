@@ -1,0 +1,15 @@
+﻿  Melsbackseditor_GFBANM_Edition.cpp
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(20,15): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(18,12): warning C4101: 'seconds': unreferenced local variable
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(320,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(325,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(329,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(334,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(338,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition\Melsbackseditor_GFBANM_Edition.cpp(343,38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating code
+  1 of 226 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Melsbackseditor_GFBANM_Edition.vcxproj -> C:\Users\pkmnf\source\repos\Melsbackseditor_GFBANM_Edition\x64\Release\Melsbackseditor_GFBANM_Edition.exe
