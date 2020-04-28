@@ -9,3 +9,5 @@ Requirements for the PR:
 2. Has comments to help me understand the changes
 3. Either only uses the standard library or you provide a link to a tutorial on any libraries used
 4. Still has Lifelight references
+Tutorial for devs on how to use the program:
+https://youtu.be/0tk2cDJgC-A
