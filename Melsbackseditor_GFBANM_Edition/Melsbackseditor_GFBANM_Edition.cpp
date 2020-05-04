@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     size_t found11;
     size_t found12;
     size_t found13;
-    string filecontent;
+    string filecontent[100000];
     string inpath;
     string inpath2;
     int bonecount;
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
     string bonename[] = {"", "", "", "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "" , "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
     ifstream infile(inpath);
     streampos size = infile.tellg();
-    ofstream outfile(outpath + ".json");
+    ofstream outfile("deleteme.json");
     ifstream infile2(inpath2);
     streampos size2 = infile2.tellg();
     for (int i = 0; i < (texcount + shadercount + 18); i++)
@@ -306,12 +306,54 @@ int main(int argc, char *argv[])
     }
     for (int i = 0; i < (bonecount * framecount); i++)
     {
-        xtransflt[i] = stof(xtransstr[i]);
-        ytransflt[i] = stof(ytransstr[i]);
-        ztransflt[i] = stof(ztransstr[i]);
-        xrotflt[i] = stof(xrotstr[i]);
-        yrotflt[i] = stof(yrotstr[i]);
-        zrotflt[i] = stof(zrotstr[i]);
+        if (xtransstr[i] != "NaN")
+        {
+            xtransflt[i] = stof(xtransstr[i]);
+        }
+        else
+        {
+            xtransflt[i] = 0;
+        }
+        if (ytransstr[i] != "NaN")
+        {
+            ytransflt[i] = stof(ytransstr[i]);
+        }
+        else
+        {
+            ytransflt[i] = 0;
+        }
+        if (ztransstr[i] != "NaN")
+        {
+            ztransflt[i] = stof(ztransstr[i]);
+        }
+        else
+        {
+            ztransflt[i] = 0;
+        }
+        if (xrotstr[i] != "NaN")
+        {
+            xrotflt[i] = stof(xrotstr[i]);
+        }
+        else
+        {
+            xrotflt[i] = 0;
+        }
+        if (yrotstr[i] != "NaN")
+        {
+            yrotflt[i] = stof(yrotstr[i]);
+        }
+        else
+        {
+            yrotflt[i] = 0;
+        }
+        if (zrotstr[i] != "NaN")
+        {
+            zrotflt[i] = stof(zrotstr[i]);
+        }
+        else
+        {
+            zrotflt[i] = 0;
+        }
     }
     for (int i = 0; i < (bonecount * framecount); i++)
     {
@@ -670,9 +712,223 @@ int main(int argc, char *argv[])
     }
     outfile << "  Triggers: {\n    Triggers: [\n      {\n        Name: \"System/SetBoolParameter\",\n        FrameEnd: " << framecount << ",\n        Parameter: {\n        }\n      },\n      {\n        Name: \"Sound/Wwise\",\n        FrameStart: 11,\n        FrameEnd: 12,\n        Parameter: {\n        }\n      }\n    ]\n  }\n}\n";
     outfile.close();
-    cout << "Thank you for singing in the chorus of souls!\nIf you are adding back a removed Pokemon,\nthen the colors of that Pokemon are now weaving into a spire of flame.\n";
+    ifstream infile3("deleteme.json");
+    ofstream outfile2(outpath + ".json");
     infile.close();
     infile2.close();
+    for (int i = 0; i < 100000; i++)
+    {
+        getline(infile3, filecontent[i], '\n');
+    }
+    if (looptrue == 'y')
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            outfile2 << filecontent[i] << endl;
+        }
+        for (int i = 8; i < 100000; i++)
+        {
+            if (filecontent[i] == "        Rotate_type: \"DynamicRotationTrack\","
+                && filecontent[i + 4] == filecontent[i + 9]
+                && filecontent[i + 9] == filecontent[i + 14]
+                && filecontent[i + 14] == filecontent[i + 19]
+                && filecontent[i + 19] == filecontent[i + 24]
+                && filecontent[i + 5] == filecontent[i + 10]
+                && filecontent[i + 10] == filecontent[i + 15]
+                && filecontent[i + 15] == filecontent[i + 20]
+                && filecontent[i + 20] == filecontent[i + 25]
+                && filecontent[i + 6] == filecontent[i + 11]
+                && filecontent[i + 11] == filecontent[i + 16]
+                && filecontent[i + 16] == filecontent[i + 21]
+                && filecontent[i + 21] == filecontent[i + 26])
+            {
+                outfile2 << filecontent[i - 10] << endl << filecontent[i - 9] << endl << filecontent[i - 8] << endl << filecontent[i - 7] << endl << filecontent[i - 6] << endl << filecontent[i - 5] << endl << filecontent[i - 4] << endl << filecontent[i - 3] << endl << filecontent[i - 2] << endl << filecontent[i - 1] << endl << "        Rotate_type: \"FixedRotationTrack\",\n        Rotate: {\n          Value: {\n" << filecontent[i + 4] << endl << filecontent[i + 5] << endl << filecontent[i + 6] << "\n          }\n        },\n";
+            }
+            if (filecontent[i] == "        Translate_type: \"DynamicVectorTrack\","
+                && filecontent[i + 4] == filecontent[i + 9]
+                && filecontent[i + 9] == filecontent[i + 14]
+                && filecontent[i + 14] == filecontent[i + 19]
+                && filecontent[i + 19] == filecontent[i + 24]
+                && filecontent[i + 5] == filecontent[i + 10]
+                && filecontent[i + 10] == filecontent[i + 15]
+                && filecontent[i + 15] == filecontent[i + 20]
+                && filecontent[i + 20] == filecontent[i + 25]
+                && filecontent[i + 6] == filecontent[i + 11]
+                && filecontent[i + 11] == filecontent[i + 16]
+                && filecontent[i + 16] == filecontent[i + 21]
+                && filecontent[i + 21] == filecontent[i + 26])
+            {
+                if (filecontent[i + (5 * framecount) + 7] != "  },") outfile2 << "        Translate_type: \"FixedVectorTrack\",\n        Translate: {\n          Value: {\n" << filecontent[i + 4] << endl << filecontent[i + 5] << endl << filecontent[i + 6] << endl << "          }\n        }\n      },\n";
+                else
+                {
+                    outfile2 << "        Translate_type: \"FixedVectorTrack\",\n        Translate: {\n          Value: {\n" << filecontent[i + 4] << endl << filecontent[i + 5] << endl << filecontent[i + 6] << endl << "          }\n        }\n      }\n    ]\n  },\n";
+                }
+            }
+            if (filecontent[i] == "        Rotate_type: \"DynamicRotationTrack\","
+                && (filecontent[i + 4] != filecontent[i + 9]
+                    || filecontent[i + 9] != filecontent[i + 14]
+                    || filecontent[i + 14] != filecontent[i + 19]
+                    || filecontent[i + 19] != filecontent[i + 24]
+                    || filecontent[i + 5] != filecontent[i + 10]
+                    || filecontent[i + 10] != filecontent[i + 15]
+                    || filecontent[i + 15] != filecontent[i + 20]
+                    || filecontent[i + 20] != filecontent[i + 25]
+                    || filecontent[i + 6] != filecontent[i + 11]
+                    || filecontent[i + 11] != filecontent[i + 16]
+                    || filecontent[i + 16] != filecontent[i + 21]
+                    || filecontent[i + 21] != filecontent[i + 26]))
+            {
+                outfile2 << filecontent[i - 10] << endl << filecontent[i - 9] << endl << filecontent[i - 8] << endl << filecontent[i - 7] << endl << filecontent[i - 6] << endl << filecontent[i - 5] << endl << filecontent[i - 4] << endl << filecontent[i - 3] << endl << filecontent[i - 2] << endl << filecontent[i - 1] << endl << "        Rotate_type: \"DynamicRotationTrack\",\n        Rotate: {\n          Values: [\n";
+                for (int j = i + 3; j < (i + (5 * framecount) + 5); j++)
+                {
+                    outfile2 << filecontent[j] << endl;
+                }
+            }
+            if (filecontent[i] == "        Translate_type: \"DynamicVectorTrack\","
+                && (filecontent[i + 4] != filecontent[i + 9]
+                    || filecontent[i + 9] != filecontent[i + 14]
+                    || filecontent[i + 14] != filecontent[i + 19]
+                    || filecontent[i + 19] != filecontent[i + 24]
+                    || filecontent[i + 5] != filecontent[i + 10]
+                    || filecontent[i + 10] != filecontent[i + 15]
+                    || filecontent[i + 15] != filecontent[i + 20]
+                    || filecontent[i + 20] != filecontent[i + 25]
+                    || filecontent[i + 6] != filecontent[i + 11]
+                    || filecontent[i + 11] != filecontent[i + 16]
+                    || filecontent[i + 16] != filecontent[i + 21]
+                    || filecontent[i + 21] != filecontent[i + 26]))
+            {
+                outfile2 << "        Translate_type: \"DynamicVectorTrack\",\n        Translate: {\n          Values: [\n";
+                if (filecontent[i + (5 * framecount) + 7] != "  },")
+                {
+                    for (int j = i + 3; j < (i + (5 * framecount) + 6); j++)
+                    {
+                        outfile2 << filecontent[j] << endl;
+                    }
+                }
+                else
+                {
+                    for (int j = i + 3; j < (i + (5 * framecount) + 8); j++)
+                    {
+                        outfile2 << filecontent[j] << endl;
+                    }
+                }
+            }
+            if (filecontent[i] == "  Materials: {")
+            {
+                for (int j = i; j < (i + 10000); j++)
+                {
+                    outfile2 << filecontent[j] << endl;
+                }
+            }
+        }
+    }
+    if (looptrue == 'n')
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            outfile2 << filecontent[i] << endl;
+        }
+        for (int i = 7; i < 100000; i++)
+        {
+            if (filecontent[i] == "        Rotate_type: \"DynamicRotationTrack\","
+                && filecontent[i + 4] == filecontent[i + 9]
+                && filecontent[i + 9] == filecontent[i + 14]
+                && filecontent[i + 14] == filecontent[i + 19]
+                && filecontent[i + 19] == filecontent[i + 24]
+                && filecontent[i + 5] == filecontent[i + 10]
+                && filecontent[i + 10] == filecontent[i + 15]
+                && filecontent[i + 15] == filecontent[i + 20]
+                && filecontent[i + 20] == filecontent[i + 25]
+                && filecontent[i + 6] == filecontent[i + 11]
+                && filecontent[i + 11] == filecontent[i + 16]
+                && filecontent[i + 16] == filecontent[i + 21]
+                && filecontent[i + 21] == filecontent[i + 26])
+            {
+                outfile2 << filecontent[i - 10] << endl << filecontent[i - 9] << endl << filecontent[i - 8] << endl << filecontent[i - 7] << endl << filecontent[i - 6] << endl << filecontent[i - 5] << endl << filecontent[i - 4] << endl << filecontent[i - 3] << endl << filecontent[i - 2] << endl << filecontent[i - 1] << endl << "        Rotate_type: \"FixedRotationTrack\",\n        Rotate: {\n          Value: {\n" << filecontent[i + 4] << endl << filecontent[i + 5] << endl << filecontent[i + 6] << "\n          }\n        },\n";
+            }
+            if (filecontent[i] == "        Translate_type: \"DynamicVectorTrack\","
+                && filecontent[i + 4] == filecontent[i + 9]
+                && filecontent[i + 9] == filecontent[i + 14]
+                && filecontent[i + 14] == filecontent[i + 19]
+                && filecontent[i + 19] == filecontent[i + 24]
+                && filecontent[i + 5] == filecontent[i + 10]
+                && filecontent[i + 10] == filecontent[i + 15]
+                && filecontent[i + 15] == filecontent[i + 20]
+                && filecontent[i + 20] == filecontent[i + 25]
+                && filecontent[i + 6] == filecontent[i + 11]
+                && filecontent[i + 11] == filecontent[i + 16]
+                && filecontent[i + 16] == filecontent[i + 21]
+                && filecontent[i + 21] == filecontent[i + 26])
+            {
+                if (filecontent[i + (5 * framecount) + 7] != "  },") outfile2 << "        Translate_type: \"FixedVectorTrack\",\n        Translate: {\n          Value: {\n" << filecontent[i + 4] << endl << filecontent[i + 5] << endl << filecontent[i + 6] << endl << "          }\n        }\n      },\n";
+                else
+                {
+                    outfile2 << "        Translate_type: \"FixedVectorTrack\",\n        Translate: {\n          Value: {\n" << filecontent[i + 4] << endl << filecontent[i + 5] << endl << filecontent[i + 6] << endl << "          }\n        }\n      }\n    ]\n  },\n";
+                }
+            }
+            if (filecontent[i] == "        Rotate_type: \"DynamicRotationTrack\","
+                && (filecontent[i + 4] != filecontent[i + 9]
+                || filecontent[i + 9] != filecontent[i + 14]
+                || filecontent[i + 14] != filecontent[i + 19]
+                || filecontent[i + 19] != filecontent[i + 24]
+                || filecontent[i + 5] != filecontent[i + 10]
+                || filecontent[i + 10] != filecontent[i + 15]
+                || filecontent[i + 15] != filecontent[i + 20]
+                || filecontent[i + 20] != filecontent[i + 25]
+                || filecontent[i + 6] != filecontent[i + 11]
+                || filecontent[i + 11] != filecontent[i + 16]
+                || filecontent[i + 16] != filecontent[i + 21]
+                || filecontent[i + 21] != filecontent[i + 26]))
+            {
+                outfile2 << filecontent[i - 10] << endl << filecontent[i - 9] << endl << filecontent[i - 8] << endl << filecontent[i - 7] << endl << filecontent[i - 6] << endl << filecontent[i - 5] << endl << filecontent[i - 4] << endl << filecontent[i - 3] << endl << filecontent[i - 2] << endl << filecontent[i - 1] << endl << "        Rotate_type: \"DynamicRotationTrack\",\n        Rotate: {\n          Values: [\n";
+                for (int j = i + 3; j < (i + (5 * framecount) + 5); j++)
+                {
+                    outfile2 << filecontent[j] << endl;
+                }
+            }
+            if (filecontent[i] == "        Translate_type: \"DynamicVectorTrack\","
+                && (filecontent[i + 4] != filecontent[i + 9]
+                    || filecontent[i + 9] != filecontent[i + 14]
+                    || filecontent[i + 14] != filecontent[i + 19]
+                    || filecontent[i + 19] != filecontent[i + 24]
+                    || filecontent[i + 5] != filecontent[i + 10]
+                    || filecontent[i + 10] != filecontent[i + 15]
+                    || filecontent[i + 15] != filecontent[i + 20]
+                    || filecontent[i + 20] != filecontent[i + 25]
+                    || filecontent[i + 6] != filecontent[i + 11]
+                    || filecontent[i + 11] != filecontent[i + 16]
+                    || filecontent[i + 16] != filecontent[i + 21]
+                    || filecontent[i + 21] != filecontent[i + 26]))
+            {
+                outfile2 << "        Translate_type: \"DynamicVectorTrack\",\n        Translate: {\n          Values: [\n";
+                if (filecontent[i + (5 * framecount) + 7] != "  },")
+                {
+                    for (int j = i + 3; j < (i + (5 * framecount) + 6); j++)
+                    {
+                        outfile2 << filecontent[j] << endl;
+                    }
+                }
+                else
+                {
+                    for (int j = i + 3; j < (i + (5 * framecount) + 8); j++)
+                    {
+                        outfile2 << filecontent[j] << endl;
+                    }
+                }
+            }
+            if (filecontent[i] == "  Materials: {")
+            {
+                for (int j = i; j < (i + 10000); j++)
+                {
+                    outfile2 << filecontent[j] << endl;
+                }
+            }
+        }
+    }
+    cout << "Thank you for singing in the chorus of souls!\nIf you are adding back a removed Pokemon,\nthen the colors of that Pokemon are now weaving into a spire of flame.\n";
+    infile3.close();
+    outfile2.close();
     return 0;
 }
 
